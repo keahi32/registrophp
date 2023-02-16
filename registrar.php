@@ -39,6 +39,8 @@
     if(isset($_POST['submit'])){
     $email=mysqli_real_escape_string($conn,$_POST['email']);
     $password=mysqli_real_escape_string($conn,$_POST['password']);
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $password=$password_hash;
     $sql = "INSERT INTO usuarios (email,password)
   VALUES ('$email', '$password')";
     if (mysqli_query($conn, $sql)) {
