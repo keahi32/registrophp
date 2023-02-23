@@ -45,6 +45,8 @@
   VALUES ('$email', '$password')";
     if (mysqli_query($conn, $sql)) {
         echo '<div class="centrar">Te has registrado correctamente</div>';
+        $web=$_SERVER['SERVER_NAME'];
+        header( "refresh:2; url=http://$web:8080" ); 
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
